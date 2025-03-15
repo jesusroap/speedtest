@@ -1,5 +1,5 @@
 # Utiliza la imagen oficial de PHP con Apache
-FROM php:8.0-apache
+FROM php:8.1-apache
 
 # Copia los archivos de tu aplicación al directorio predeterminado de Apache
 COPY . /var/www/html/
