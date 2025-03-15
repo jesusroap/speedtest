@@ -1,16 +1,14 @@
-# Utiliza la imagen base de Alpine
-FROM alpine:latest
+# Utiliza la imagen base de Apache en Alpine
+FROM httpd:alpine
 
-# Instala Apache
-RUN apk update && \
-    apk add apache2 && \
-    rm -rf /var/cache/apk/*
+# Establece el directorio de trabajo en el contenedor
+WORKDIR /usr/local/apache2/htdocs/
 
-# Copia los archivos de tu aplicación al directorio de Apache
-COPY ./public-html/ /var/www/localhost/htdocs/
+# Copia todos los archivos y directorios desde la raíz del repositorio al directorio de trabajo en el contenedor
+COPY . .
 
 # Expone el puerto 80
 EXPOSE 80
 
-# Comando para iniciar Apache en primer plano
+# Comando para ejecutar Apache en primer plano
 CMD ["httpd", "-D", "FOREGROUND"]
