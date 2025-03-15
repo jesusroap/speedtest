@@ -6,7 +6,10 @@
  * Client side, the output of this script can be treated as JSON or as regular text. If the output is regular text, it will be shown to the user as is.
  */
 
-error_reporting(0);
+// error_reporting(0);
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 define('API_KEY_FILE', 'getIP_ipInfo_apikey.php');
 define('SERVER_LOCATION_CACHE_FILE', 'getIP_serverLocation.php');
