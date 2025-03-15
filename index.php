@@ -8,7 +8,8 @@
 <body>
     Speedtest
     <?php
-        echo "Test"
+        echo "Test",
+        print(1 + 1)
     ?>
 </body>
 </html>
