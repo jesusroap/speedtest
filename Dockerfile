@@ -1,14 +1,11 @@
-# Utiliza la imagen base de Apache en Alpine
-FROM httpd:alpine
+# Utiliza la imagen oficial de PHP con Apache
+FROM php:8.0-apache
 
-# Establece el directorio de trabajo en el contenedor
-WORKDIR /usr/local/apache2/htdocs/
+# Copia los archivos de tu aplicación al directorio predeterminado de Apache
+COPY . /var/www/html/
 
-# Copia todos los archivos y directorios desde la raíz del repositorio al directorio de trabajo en el contenedor
-COPY . .
+# Habilita el módulo de reescritura de Apache, si es necesario
+RUN a2enmod rewrite
 
 # Expone el puerto 80
 EXPOSE 80
-
-# Comando para ejecutar Apache en primer plano
-CMD ["httpd", "-D", "FOREGROUND"]
